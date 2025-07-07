@@ -6,7 +6,7 @@
 /*   By: hgergink <hgergink@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 17:15:53 by hgergink          #+#    #+#             */
-/*   Updated: 2025/07/07 17:42:31 by hgergink         ###   ########.fr       */
+/*   Updated: 2025/07/07 19:15:45 by hgergink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ void	ft_numprint_iter(long long int num, int *count)
 
 void	ft_strprint_iter(char *str, int *count)
 {
+	if (!str)
+	{
+		write(1, "(null)", 6);
+		*count += 6;
+		return ;
+	}
 	while (*str)
 	{
 		write(1, str, 1);
@@ -41,7 +47,7 @@ void	ft_strprint_iter(char *str, int *count)
 	}
 }
 
-void	ft_hexprint_iter(int num, int *count, char *base)
+void	ft_hexprint_iter(unsigned int num, int *count, char *base)
 {
 	if (num >= 16)
 		ft_hexprint_iter(num / 16, count, base);

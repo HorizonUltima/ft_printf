@@ -6,7 +6,7 @@
 /*   By: hgergink <hgergink@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 17:14:23 by hgergink          #+#    #+#             */
-/*   Updated: 2025/07/07 17:53:14 by hgergink         ###   ########.fr       */
+/*   Updated: 2025/07/07 19:25:32 by hgergink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static int	ft_formatcheck(char chr, va_list *args, int *count)
 		ft_ptrprint_iter((uintptr_t)va_arg(*args, void *), count);
 	}
 	else if (chr == 'x')
-		ft_hexprint_iter(va_arg(*args, int), count, HEXL);
+		ft_hexprint_iter(va_arg(*args, unsigned int), count, HEXL);
 	else if (chr == 'X')
-		ft_hexprint_iter(va_arg(*args, int), count, HEXB);
+		ft_hexprint_iter(va_arg(*args, unsigned int), count, HEXB);
 	else
 		return (0);
 	return (1);
