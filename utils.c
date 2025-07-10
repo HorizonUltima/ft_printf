@@ -6,11 +6,11 @@
 /*   By: hgergink <hgergink@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 17:15:53 by hgergink          #+#    #+#             */
-/*   Updated: 2025/07/07 19:15:45 by hgergink         ###   ########.fr       */
+/*   Updated: 2025/07/10 16:03:34 by hgergink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printlib.h"
+#include "libftprintf.h"
 
 void	ft_chrprint_iter(char c, int *count)
 {
@@ -54,7 +54,7 @@ void	ft_hexprint_iter(unsigned int num, int *count, char *base)
 	ft_chrprint_iter(base[num % 16], count);
 }
 
-void	ft_ptrprint_iter(uintptr_t ptradr, int *count)
+void	ft_ptrprint_iter(unsigned long int ptradr, int *count)
 {
 	if (ptradr >= 16)
 		ft_ptrprint_iter(ptradr / 16, count);

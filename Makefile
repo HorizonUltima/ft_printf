@@ -1,8 +1,8 @@
-NAME = printlib.a
-CFLAGS = -Wall -Wextra -Werror
+NAME = libftprintf.a
 SRC = ft_printf.c utils.c
-CC = cc
 OBJ = $(SRC:.c=.o)
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 

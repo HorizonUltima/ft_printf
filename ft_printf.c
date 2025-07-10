@@ -6,11 +6,24 @@
 /*   By: hgergink <hgergink@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 17:14:23 by hgergink          #+#    #+#             */
-/*   Updated: 2025/07/07 19:25:32 by hgergink         ###   ########.fr       */
+/*   Updated: 2025/07/10 16:03:37 by hgergink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printlib.h"
+#include "libftprintf.h"
+
+static void	ft_ptrcheck(void *ptr, int *count)
+{
+	if (!ptr)
+	{
+		write(1, "(nil)", 5);
+		*count += 5;
+		return ;
+	}
+	write(1, "0x", 2);
+	*count += 2;
+	ft_ptrprint_iter((unsigned long int)ptr, count);
+}
 
 static int	ft_formatcheck(char chr, va_list *args, int *count)
 {
@@ -23,11 +36,7 @@ static int	ft_formatcheck(char chr, va_list *args, int *count)
 	else if (chr == 'u')
 		ft_numprint_iter(va_arg(*args, unsigned int), count);
 	else if (chr == 'p')
-	{
-		write(1, "0x", 2);
-		*count += 2;
-		ft_ptrprint_iter((uintptr_t)va_arg(*args, void *), count);
-	}
+		ft_ptrcheck(va_arg(*args, void *), count);
 	else if (chr == 'x')
 		ft_hexprint_iter(va_arg(*args, unsigned int), count, HEXL);
 	else if (chr == 'X')
