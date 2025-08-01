@@ -6,11 +6,11 @@
 /*   By: hgergink <hgergink@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 17:14:23 by hgergink          #+#    #+#             */
-/*   Updated: 2025/07/10 16:03:37 by hgergink         ###   ########.fr       */
+/*   Updated: 2025/08/01 08:59:17 by hgergink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static void	ft_ptrcheck(void *ptr, int *count)
 {
@@ -46,26 +46,23 @@ static int	ft_formatcheck(char chr, va_list *args, int *count)
 	return (1);
 }
 
-static int	ft_gateway(const char **str, va_list *args, int *count)
+static void	ft_gateway(const char **str, va_list *args, int *count)
 {
 	if (ft_formatcheck(*(*str + 1), args, count))
 	{
 		(*str)++;
-		return (1);
 	}
 	else if (*(*str + 1) == '%')
 	{
 		(*str)++;
 		write(1, *str, 1);
 		*count += 1;
-		return (1);
 	}
 	else
 	{
 		write(1, "%", 1);
 		*count += 1;
 	}
-	return (0);
 }
 
 int	ft_printf(const char *str, ...)
@@ -79,10 +76,11 @@ int	ft_printf(const char *str, ...)
 	count = 0;
 	while (*str)
 	{
-		if (*str == '%' && ft_gateway(&str, &args, &count))
+		if (*str == '%')
+		{
+			ft_gateway(&str, &args, &count);
 			str++;
-		else if (*str == '%')
-			str++;
+		}
 		else
 		{
 			write(1, str, 1);

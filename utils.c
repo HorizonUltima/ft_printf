@@ -6,11 +6,11 @@
 /*   By: hgergink <hgergink@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 17:15:53 by hgergink          #+#    #+#             */
-/*   Updated: 2025/07/10 16:03:34 by hgergink         ###   ########.fr       */
+/*   Updated: 2025/08/01 08:31:04 by hgergink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 void	ft_chrprint_iter(char c, int *count)
 {
